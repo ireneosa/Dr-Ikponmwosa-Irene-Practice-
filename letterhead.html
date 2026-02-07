@@ -1,1 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr Ikponmwosa Irene Practice - Letterhead</title>
+    <style>
+        @media print {
+            body { margin: 0; padding: 0; background: white; }
+            .no-print { display: none !important; }
+            .page { box-shadow: none; margin: 0; }
+            .bg-pattern { opacity: 0.03; }
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: linear-gradient(135deg, #1a237e 0%, #4a148c 50%, #1a237e 100%);
+            margin: 0;
+            padding: 30px 20px;
+            min-height: 100vh;
+        }
+
+        /* === BUTTONS === */
+        .no-print {
+            text-align: center;
+            max-width: 210mm;
+            margin: 0 auto 25px auto;
+        }
+
+        .print-btn {
+            background: linear-gradient(135deg, #ffffff, #e8eaf6);
+            color: #1a237e;
+            border: 2px solid #ffffff;
+            padding: 16px 45px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 5px 10px;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .print-btn:hover {
+            background: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.3);
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #e91e63, #c62828);
+            color: white;
+            border: 2px solid #e91e63;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, #c62828, #e91e63);
+            border-color: #ffffff;
+        }
+
+        /* === A4 PAGE === */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background: #ffffff;
+            margin: 0 auto;
+            padding: 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* === BACKGROUND PATTERN === */
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.04;
+            z-index: 0;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(circle at 20% 80%, #1a237e 1px, transparent 1px),
+                radial-gradient(circle at 80% 20%, #4a148c 1px, transparent 1px),
+                radial-gradient(circle at 50% 50%, #c62828 1px, transparent 1px);
+            background-size: 30px 30px, 40px 40px, 50px 50px;
+        }
+
+        /* === LEFT SIDE DECORATIVE STRIPE === */
+        .side-stripe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 12px;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                #1a237e 0%, 
+                #283593 15%, 
+                #4a148c 30%, 
+                #6a1b9a 45%, 
+                #c62828 55%, 
+                #e91e63 65%, 
+                #4a148c 80%, 
+                #1a237e 100%
+            );
+            z-index: 2;
+        }
+
+        /* === RIGHT SIDE THIN STRIPE === */
+        .side-stripe-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                #1a237e 0%, 
+                #4a148c 50%, 
+                #1a237e 100%
+            );
+            z-index: 2;
+        }
+
+        /* === INNER CONTENT === */
+        .inner {
+            position: relative;
+            z-index: 1;
+            padding: 35px 50px 35px 55px;
+        }
+
+        /* === TOP DECORATIVE HEADER BAR === */
+        .header-bar {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 25%, #4a148c 50%, #6a1b9a 75%, #4a148c 100%);
+            margin: -35px -50px 0 -55px;
+            padding: 25px 50px 20px 55px;
+            position: relative;
+        }
+
+        .header-bar::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            right: 0;
+            height: 15px;
+            background: linear-gradient(to bottom, rgba(26,35,126,0.1), transparent);
+        }
+
+        /* === HEADER CORNER DECORATIONS === */
+        .corner-decoration-left {
+            position: absolute;
+            top: 0;
+            left: 12px;
+            width: 80px;
+            height: 80px;
+            border-bottom: 3px solid rgba(255,255,255,0.15);
+            border-right: 3px solid rgba(255,255,255,0.15);
+            border-bottom-right-radius: 30px;
+        }
+
+        .corner-decoration-right {
+            position: absolute;
+            top: 0;
+            right: 5px;
+            width: 80px;
+            height: 80px;
+            border-bottom: 3px solid rgba(255,255,255,0.15);
+            border-left: 3px solid rgba(255,255,255,0.15);
+            border-bottom-left-radius: 30px;
+        }
+
+        /* === MEDICAL CROSS IN HEADER === */
+        .header-cross {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px auto;
+        }
+
+        .header-cross span {
+            font-size: 35px;
+            color: #e91e63;
+            font-weight: bold;
+        }
+
+        .practice-name {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 3px;
+            text-align: center;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .medical-title {
+            font-size: 20px;
+            color: #e8b4f8;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 0;
+            letter-spacing: 2px;
+        }
+
+        /* === DETAILS SECTION === */
+        .details-section {
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .details-box {
+            background: linear-gradient(135deg, #f5f5ff, #ede7f6, #f5f5ff);
+            border: 1px solid #c5cae9;
+            border-left: 5px solid #4a148c;
+            border-right: 5px solid #4a148c;
+            border-radius: 10px;
+            padding: 18px 25px;
+            margin: 0 auto;
+            max-width: 100%;
+            box-shadow: 0 3px 15px rgba(74, 20, 140, 0.08);
+        }
+
+        .details-row {
+            font-size: 12.5px;
+            color: #1a237e;
+            line-height: 2;
+            text-align: center;
+        }
+
+        .details-row strong {
+            color: #0d1657;
+        }
+
+        .details-row .label {
+            color: #4a148c;
+            font-weight: bold;
+        }
+
+        .details-row .divider {
+            color: #e91e63;
+            font-weight: bold;
+            margin: 0 8px;
+        }
+
+        /* === REGISTRATION BADGE === */
+        .reg-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #1a237e, #283593);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .badge.purple {
+            background: linear-gradient(135deg, #4a148c, #6a1b9a);
+        }
+
+        /* === DIVIDERS === */
+        .fancy-divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .fancy-divider .line {
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #1a237e, #4a148c);
+        }
+
+        .fancy-divider .line.right {
+            background: linear-gradient(to left, transparent, #1a237e, #4a148c);
+        }
+
+        .fancy-divider .diamond {
+            width: 10px;
+            height: 10px;
+            background: #e91e63;
+            transform: rotate(45deg);
+            margin: 0 15px;
+        }
+
+        .fancy-divider .dot {
+            width: 6px;
+            height: 6px;
+            background: #4a148c;
+            border-radius: 50%;
+            margin: 0 8px;
+        }
+
+        /* === WATERMARK === */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 280px;
+            color: rgba(26, 35, 126, 0.025);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .watermark-text {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 60px;
+            color: rgba(74, 20, 140, 0.025);
+            pointer-events: none;
+            z-index: 0;
+            letter-spacing: 15px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* === LETTER BODY === */
+        .letter-content {
+            position: relative;
+            z-index: 1;
+            min-height: 480px;
+            font-size: 14px;
+            line-height: 2;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .date-line {
+            text-align: right;
+            margin-bottom: 25px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .ref-line {
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .to-section {
+            margin-bottom: 25px;
+            line-height: 2.2;
+            color: #444;
+        }
+
+        .subject-line {
+            font-weight: bold;
+            text-decoration: underline;
+            text-decoration-color: #4a148c;
+            margin-bottom: 25px;
+            font-size: 15px;
+            color: #1a237e;
+        }
+
+        .body-text p {
+            margin-bottom: 5px;
+        }
+
+        .blank-line {
+            border-bottom: 1px dotted #bbb;
+            margin-bottom: 16px;
+            height: 22px;
+        }
+
+        /* === SIGNATURE === */
+        .signature-section {
+            margin-top: 40px;
+        }
+
+        .signature-line {
+            width: 280px;
+            border-top: 3px solid #1a237e;
+            margin-top: 60px;
+            padding-top: 10px;
+            position: relative;
+        }
+
+        .signature-line::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: #e91e63;
+        }
+
+        .signature-line strong {
+            color: #1a237e;
+            font-size: 15px;
+            letter-spacing: 1px;
+        }
+
+        .sig-details {
+            font-size: 11.5px;
+            color: #666;
+            line-height: 1.7;
+            margin-top: 3px;
+        }
+
+        /* === FOOTER === */
+        .page-footer {
+            position: absolute;
+            bottom: 0;
+            left: 12px;
+            right: 5px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .footer-bar {
+            background: linear-gradient(135deg, #1a237e 0%, #4a148c 50%, #1a237e 100%);
+            padding: 12px 20px;
+            border-top: 3px solid #e91e63;
+        }
+
+        .footer-text {
+            font-size: 10px;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.7;
+        }
+
+        .footer-text strong {
+            color: #e8b4f8;
+        }
+
+        .footer-text .sep {
+            color: #e91e63;
+            margin: 0 5px;
+        }
+
+        /* === BOTTOM CORNER DECORATIONS === */
+        .bottom-corner-left {
+            position: absolute;
+            bottom: 50px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            border-top: 2px solid rgba(26,35,126,0.08);
+            border-right: 2px solid rgba(26,35,126,0.08);
+            border-top-right-radius: 25px;
+            z-index: 0;
+        }
+
+        .bottom-corner-right {
+            position: absolute;
+            bottom: 50px;
+            right: 15px;
+            width: 60px;
+            height: 60px;
+            border-top: 2px solid rgba(26,35,126,0.08);
+            border-left: 2px solid rgba(26,35,126,0.08);
+            border-top-left-radius: 25px;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BUTTONS -->
+    <div class="no-print">
+        <button class="print-btn" onclick="window.print()">&#128424; Print Letterhead</button>
+        <button class="print-btn download-btn" onclick="window.print()">&#128190; Save as PDF</button>
+    </div>
+
+    <!-- A4 PAGE -->
+    <div class="page">
+
+        <!-- Background Pattern -->
+        <div class="bg-pattern"></div>
+
+        <!-- Side Stripes -->
+        <div class="side-stripe"></div>
+        <div class="side-stripe-right"></div>
+
+        <!-- Corner Decorations -->
+        <div class="corner-decoration-left"></div>
+        <div class="corner-decoration-right"></div>
+        <div class="bottom-corner-left"></div>
+        <div class="bottom-corner-right"></div>
+
+        <!-- Watermarks -->
+        <div class="watermark">&#9764;</div>
+        <div class="watermark-text">CAREFIRST</div>
+
+        <!-- Inner Content -->
+        <div class="inner">
+
+            <!-- Header Bar -->
+            <div class="header-bar">
+                <div class="header-cross">
+                    <span>+</span>
+                </div>
+                <div class="practice-name">Dr Ikponmwosa Irene Practice</div>
+                <div class="medical-title">Medical Practitioner</div>
+            </div>
+
+            <!-- Details Section -->
+            <div class="details-section">
+
+                <!-- Registration Badges -->
+                <div class="reg-badges">
+                    <span class="badge">HPCSA Reg: MP0718181</span>
+                    <span class="badge purple">Practice No: 1232126</span>
+                </div>
+
+                <!-- Contact Details Box -->
+                <div class="details-box">
+                    <div class="details-row">
+                        <span class="label">Business Address:</span> 141 Acacia Street, Rosedale, Uitenhage, Eastern Cape
+                    </div>
+                    <div class="details-row">
+                        <span class="label">Postal Address:</span> 27 Devon Place, 04 Penzance Observatory, Cape Town
+                    </div>
+                    <div class="details-row">
+                        <span class="label">Phone:</span> 063 003 0044
+                        <span class="divider">|</span>
+                        <span class="label">Email:</span> ikbrown2001@yahoo.com
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fancy Divider -->
+            <div class="fancy-divider">
+                <div class="line"></div>
+                <div class="dot"></div>
+                <div class="diamond"></div>
+                <div class="dot"></div>
+                <div class="line right"></div>
+            </div>
+
+            <!-- Letter Content -->
+            <div class="letter-content">
+
+                <div class="date-line">
+                    Date: ________________________________
+                </div>
+
+                <div class="ref-line">
+                    Our Ref: ______________________ &nbsp;&nbsp;&nbsp; Your Ref: ______________________
+                </div>
+
+                <div class="to-section">
+                    To: ____________________________________________<br>
+                    ____________________________________________<br>
+                    ____________________________________________<br>
+                    ____________________________________________
+                </div>
+
+                <div class="subject-line">
+                    Re: ________________________________________________________________________________
+                </div>
+
+                <div class="body-text">
+                    <p>Dear Sir/Madam,</p>
+                </div>
+
+                <div class="blank-line"></div>
+                <div class="blank-line"></div>
+                <div class="blank-line"></div>
+                <div class="blank-line"></div>
+                <div class="blank-line"></div>
+                <div class="blank-line"></div>
+                <div class="blank-line"></div>
+                <div class="blank-line"></div>
+                <div class="blank-line"></div>
+                <div class="blank-line"></div>
+
+                <!-- Signature -->
+                <div class="signature-section">
+                    <p>Yours faithfully,</p>
+                    <div class="signature-line">
+                        <strong>Dr. Ikponmwosa Irene</strong>
+                        <div class="sig-details">
+                            Medical Practitioner<br>
+                            HPCSA Reg No: MP0718181<br>
+                            Practice No: 1232126
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="page-footer">
+            <div class="footer-bar">
+                <div class="footer-text">
+                    <strong>Dr Ikponmwosa Irene Practice</strong>
+                    <span class="sep">&#9830;</span>
+                    141 Acacia Street, Rosedale, Uitenhage, Eastern Cape
+                    <span class="sep">&#9830;</span>
+                    Phone: 063 003 0044
+                    <span class="sep">&#9830;</span>
+                    Email: ikbrown2001@yahoo.com
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
 
