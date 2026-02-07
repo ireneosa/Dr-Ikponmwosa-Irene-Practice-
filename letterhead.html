@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr Ikponmwosa Irene Practice - Letterhead</title>
+    <style>
+        @media print {
+            body { margin: 0; padding: 0; }
+            .no-print { display: none; }
+            .page { box-shadow: none; margin: 0; padding: 40px 60px; }
+        }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: #e0e0e0;
+            margin: 0;
+            padding: 20px;
+        }
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background: #ffffff;
+            margin: 0 auto;
+            padding: 40px 60px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+        }
+        .top-line {
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #1a237e, #4a148c, #1a237e);
+            margin-bottom: 30px;
+        }
+        .letterhead {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #1a237e;
+            margin-bottom: 15px;
+        }
+        .practice-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a237e;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+        .title {
+            font-size: 18px;
+            color: #6a1b9a;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        .details {
+            font-size: 13px;
+            color: #1a237e;
+            line-height: 1.8;
+        }
+        .details .row {
+            margin-bottom: 3px;
+        }
+        .details strong {
+            color: #1a237e;
+        }
+        .medical-symbol {
+            position: absolute;
+            top: 95px;
+            left: 60px;
+            font-size: 40px;
+            color: rgba(26, 35, 126, 0.15);
+        }
+        .separator {
+            width: 100%;
+            height: 2px;
+            background: #1a237e;
+            margin: 5px 0 40px 0;
+        }
+        .body-content {
+            min-height: 600px;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #333;
+        }
+        .body-content .date {
+            text-align: right;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .body-content .to-section {
+            margin-bottom: 25px;
+        }
+        .body-content .subject {
+            font-weight: bold;
+            text-decoration: underline;
+            margin-bottom: 20px;
+        }
+        .body-content .letter-body {
+            margin-bottom: 30px;
+        }
+        .body-content .signature-area {
+            margin-top: 60px;
+        }
+        .body-content .signature-line {
+            width: 250px;
+            border-top: 1px solid #333;
+            margin-top: 60px;
+            padding-top: 5px;
+        }
+        .footer {
+            position: absolute;
+            bottom: 30px;
+            left: 60px;
+            right: 60px;
+            text-align: center;
+            font-size: 11px;
+            color: #888;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+        .no-print {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 210mm;
+        }
+        .print-btn {
+            background: #1a237e;
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            transition: background 0.2s;
+        }
+        .print-btn:hover {
+            background: #0d1657;
+        }
+        .download-btn {
+            background: #6a1b9a;
+        }
+        .download-btn:hover {
+            background: #4a148c;
+        }
+    </style>
+</head>
+<body>
+    <div class="no-print">
+        <button class="print-btn" onclick="window.print()">&#128424; Print Letterhead</button>
+        <button class="print-btn download-btn" onclick="window.print()">&#128190; Save as PDF</button>
+    </div>
+    <div class="page">
+        <div class="top-line"></div>
+        <div class="medical-symbol">&#9764;</div>
+        <div class="letterhead">
+            <div class="practice-name">DR IKPONMWOSA IRENE PRACTICE</div>
+            <div class="title">Medical Practitioner</div>
+            <div class="details">
+                <div class="row"><strong>HPCSA Reg No: MP0718181</strong> | <strong>Practice No: 1232126</strong></div>
+                <div class="row"><strong>Business Address:</strong> 141 Acacia Street, Rosedale, Uitenhage, Eastern Cape</div>
+                <div class="row"><strong>Postal Address:</strong> 27 Devon Place, 04 Penzance Observatory, Cape Town</div>
+                <div class="row"><strong>Phone:</strong> 063 003 0044 | <strong>Email:</strong> ikbrown2001@yahoo.com</div>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="body-content">
+            <div class="date">Date: ____________________________</div>
+            <div class="to-section">
+                To: ____________________________<br>
+                ____________________________<br>
+                ____________________________<br>
+            </div>
+            <div class="subject">Re: ________________________________________________________</div>
+            <div class="letter-body">
+                <p>Dear Sir/Madam,</p>
+                <br>
+                <p>________________________________________________________________________________________________________________________</p>
+                <br>
+                <p>________________________________________________________________________________________________________________________</p>
+                <br>
+                <p>________________________________________________________________________________________________________________________</p>
+                <br>
+                <p>________________________________________________________________________________________________________________________</p>
+                <br>
+                <p>________________________________________________________________________________________________________________________</p>
+                <br>
+                <p>________________________________________________________________________________________________________________________</p>
+                <br>
+                <p>________________________________________________________________________________________________________________________</p>
+            </div>
+            <div class="signature-area">
+                <p>Yours faithfully,</p>
+                <div class="signature-line">
+                    <strong>Dr. Ikponmwosa Irene</strong><br>
+                    Medical Practitioner<br>
+                    HPCSA Reg: MP0718181
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            DR IKPONMWOSA IRENE PRACTICE | 141 Acacia Street, Rosedale, Uitenhage, Eastern Cape | Phone: 063 003 0044 | Email: ikbrown2001@yahoo.com
+        </div>
+    </div>
+</body>
+</html>
