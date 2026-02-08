@@ -1,1 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr Ikponmwosa Irene Practice - Invoice</title>
+    <style>
+        @media print {
+            body { margin: 0; padding: 0; background: white; }
+            .no-print { display: none !important; }
+            .page { box-shadow: none; margin: 0; }
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: linear-gradient(135deg, #0d47a1 0%, #4a148c 30%, #b71c1c 60%, #4a148c 80%, #0d47a1 100%);
+            margin: 0;
+            padding: 30px 20px;
+            min-height: 100vh;
+        }
+
+        .no-print {
+            text-align: center;
+            max-width: 210mm;
+            margin: 0 auto 25px auto;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #fff, #e8eaf6);
+            color: #1a237e;
+            border: 2px solid #fff;
+            padding: 16px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 5px 10px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.3);
+        }
+
+        .btn-pdf {
+            background: linear-gradient(135deg, #e91e63, #c62828);
+            color: white;
+            border-color: #e91e63;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background: #fff;
+            margin: 0 auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-pattern {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            opacity: 0.03; z-index: 0; pointer-events: none;
+            background-image:
+                radial-gradient(circle at 25% 25%, #1a237e 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, #4a148c 1px, transparent 1px);
+            background-size: 35px 35px, 45px 45px;
+        }
+
+        .side-left {
+            position: absolute; top: 0; left: 0;
+            width: 14px; height: 100%; z-index: 2;
+            background: linear-gradient(to bottom, #1a237e, #4a148c, #e91e63, #4a148c, #1a237e);
+        }
+
+        .side-right {
+            position: absolute; top: 0; right: 0;
+            width: 14px; height: 100%; z-index: 2;
+            background: linear-gradient(to bottom, #1a237e, #4a148c, #e91e63, #4a148c, #1a237e);
+        }
+
+        .watermark {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 280px;
+            color: rgba(26,35,126,0.02);
+            pointer-events: none; z-index: 0;
+        }
+
+        .watermark-text {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%) rotate(-25deg);
+            font-size: 55px;
+            color: rgba(74,20,140,0.02);
+            pointer-events: none; z-index: 0;
+            letter-spacing: 15px; font-weight: bold; white-space: nowrap;
+        }
+
+        .inner {
+            position: relative; z-index: 1;
+            padding: 0 40px 75px 46px;
+        }
+
+        .header-bar {
+            background: linear-gradient(135deg, #1a237e, #283593, #4a148c, #6a1b9a, #4a148c);
+            margin: 0 -40px 0 -46px;
+            padding: 20px 45px 16px 50px;
+            text-align: center;
+        }
+
+        .header-cross {
+            width: 55px; height: 55px;
+            background: rgba(255,255,255,0.12);
+            border: 3px solid rgba(255,255,255,0.5);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 8px auto;
+        }
+
+        .header-cross span { font-size: 32px; color: #e91e63; font-weight: bold; }
+
+        .practice-name {
+            font-size: 24px; font-weight: bold; color: #fff;
+            letter-spacing: 3px; text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .medical-title {
+            font-size: 16px; color: #e8b4f8;
+            font-style: italic; letter-spacing: 2px;
+        }
+
+        .badges {
+            display: flex; justify-content: center;
+            gap: 12px; margin: 14px 0 12px 0; flex-wrap: wrap;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #1a237e, #283593);
+            color: white; padding: 5px 16px; border-radius: 20px;
+            font-size: 10.5px; font-weight: bold; letter-spacing: 1px;
+        }
+
+        .badge.purple { background: linear-gradient(135deg, #4a148c, #6a1b9a); }
+        .badge.red { background: linear-gradient(135deg, #b71c1c, #c62828); }
+
+        .details-box {
+            background: linear-gradient(135deg, #f5f5ff, #ede7f6, #fce4ec, #ede7f6, #f5f5ff);
+            border: 1px solid #c5cae9;
+            border-left: 4px solid #4a148c;
+            border-right: 4px solid #4a148c;
+            border-radius: 8px; padding: 10px 18px;
+        }
+
+        .details-row {
+            font-size: 11px; color: #1a237e;
+            line-height: 1.8; text-align: center;
+        }
+
+        .details-row .label { color: #4a148c; font-weight: bold; }
+        .details-row .sep { color: #e91e63; font-weight: bold; margin: 0 5px; }
+
+        .title-banner {
+            background: linear-gradient(135deg, #e8eaf6, #ede7f6, #fce4ec, #ede7f6, #e8eaf6);
+            border: 2px solid #1a237e; border-radius: 10px;
+            padding: 10px; text-align: center; margin: 14px 0;
+            position: relative;
+        }
+
+        .title-banner h2 {
+            font-size: 22px; color: #1a237e;
+            letter-spacing: 5px; text-transform: uppercase; margin: 0;
+        }
+
+        .title-banner .sub { font-size: 11px; color: #4a148c; font-style: italic; }
+
+        .title-banner::before {
+            content: ''; position: absolute; top: -2px; left: 25%;
+            width: 50%; height: 3px;
+            background: linear-gradient(to right, #e91e63, #4a148c, #e91e63);
+        }
+
+        .title-banner::after {
+            content: ''; position: absolute; bottom: -2px; left: 25%;
+            width: 50%; height: 3px;
+            background: linear-gradient(to right, #4a148c, #e91e63, #4a148c);
+        }
+
+        .divider {
+            display: flex; align-items: center; margin: 12px 0;
+        }
+
+        .divider .line {
+            flex: 1; height: 2px;
+            background: linear-gradient(to right, transparent, #1a237e, #4a148c);
+        }
+
+        .divider .line.r {
+            background: linear-gradient(to left, transparent, #1a237e, #4a148c);
+        }
+
+        .divider .diamond {
+            width: 8px; height: 8px; background: #e91e63;
+            transform: rotate(45deg); margin: 0 10px;
+        }
+
+        .divider .dot {
+            width: 5px; height: 5px; background: #4a148c;
+            border-radius: 50%; margin: 0 5px;
+        }
+
+        .inv-info {
+            display: flex; justify-content: space-between;
+            gap: 15px; margin: 12px 0; flex-wrap: wrap;
+        }
+
+        .info-block { flex: 1; min-width: 200px; }
+
+        .info-title {
+            font-size: 11px; color: #4a148c; font-weight: bold;
+            text-transform: uppercase; letter-spacing: 1px;
+            margin-bottom: 6px; padding-bottom: 3px;
+            border-bottom: 2px solid #e91e63; display: inline-block;
+        }
+
+        .field {
+            display: flex; align-items: baseline;
+            margin-bottom: 4px; font-size: 12px;
+        }
+
+        .field-label {
+            font-weight: bold; color: #1a237e;
+            min-width: 100px; font-size: 11px;
+        }
+
+        .field-val {
+            flex: 1; border-bottom: 1px dotted #9fa8da;
+            min-height: 16px; padding-left: 5px;
+        }
+
+        .inv-box {
+            background: linear-gradient(135deg, #1a237e, #283593);
+            color: white; padding: 12px 18px;
+            border-radius: 10px; text-align: center; min-width: 170px;
+        }
+
+        .inv-box .lbl {
+            font-size: 10px; opacity: 0.8;
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+
+        .inv-box .num {
+            font-size: 18px; font-weight: bold;
+            letter-spacing: 2px; margin-top: 3px;
+        }
+
+        .inv-box .dt {
+            font-size: 10px; opacity: 0.8; margin-top: 4px;
+        }
+
+        table.inv-table {
+            width: 100%; border-collapse: collapse;
+            margin: 10px 0; font-size: 12px;
+        }
+
+        table.inv-table thead {
+            background: linear-gradient(135deg, #1a237e, #283593, #4a148c);
+        }
+
+        table.inv-table thead th {
+            color: white; padding: 10px 8px; text-align: left;
+            font-size: 10.5px; letter-spacing: 1px;
+            text-transform: uppercase; font-weight: bold;
+        }
+
+        table.inv-table thead th.right { text-align: right; }
+
+        table.inv-table tbody tr { border-bottom: 1px solid #e8eaf6; }
+
+        table.inv-table tbody tr:nth-child(even) {
+            background: linear-gradient(135deg, #f5f5ff, #fafafa);
+        }
+
+        table.inv-table tbody td {
+            padding: 12px 8px; color: #333; height: 32px;
+        }
+
+        table.inv-table tbody td.right { text-align: right; }
+
+        .totals {
+            display: flex; justify-content: flex-end; margin-top: 5px;
+        }
+
+        .totals-box {
+            width: 250px; border: 2px solid #1a237e;
+            border-radius: 8px; overflow: hidden;
+        }
+
+        .t-row {
+            display: flex; justify-content: space-between;
+            padding: 8px 15px; font-size: 12px;
+            border-bottom: 1px solid #e8eaf6;
+        }
+
+        .t-row .t-l { color: #1a237e; font-weight: bold; }
+
+        .t-row .t-v {
+            min-width: 80px; text-align: right;
+            border-bottom: 1px dotted #9fa8da;
+        }
+
+        .t-row.grand {
+            background: linear-gradient(135deg, #1a237e, #4a148c);
+            border-bottom: none;
+        }
+
+        .t-row.grand .t-l {
+            color: white; font-size: 14px; letter-spacing: 1px;
+        }
+
+        .t-row.grand .t-v {
+            color: #e8b4f8; font-size: 15px;
+            font-weight: bold; border-bottom: none;
+        }
+
+        .bottom-section {
+            display: flex; gap: 15px;
+            margin-top: 14px; flex-wrap: wrap;
+        }
+
+        .pay-box {
+            flex: 1; min-width: 180px;
+            background: linear-gradient(135deg, #f5f5ff, #ede7f6);
+            border: 1px solid #c5cae9;
+            border-left: 4px solid #1a237e;
+            border-radius: 8px; padding: 12px 15px;
+        }
+
+        .pay-title {
+            font-size: 11px; font-weight: bold; color: #1a237e;
+            text-transform: uppercase; letter-spacing: 1px;
+            margin-bottom: 8px; padding-bottom: 4px;
+            border-bottom: 2px solid #e91e63; display: inline-block;
+        }
+
+        .pay-field {
+            display: flex; align-items: baseline;
+            margin-bottom: 4px; font-size: 11px;
+        }
+
+        .pay-label { font-weight: bold; color: #4a148c; min-width: 105px; }
+
+        .pay-val {
+            flex: 1; border-bottom: 1px dotted #9fa8da;
+            min-height: 14px; padding-left: 5px;
+        }
+
+        .terms-box {
+            flex: 1; min-width: 180px;
+            background: linear-gradient(135deg, #fce4ec, #f3e5f5);
+            border: 1px solid #e1bee7;
+            border-left: 4px solid #e91e63;
+            border-radius: 8px; padding: 12px 15px;
+        }
+
+        .terms-title {
+            font-size: 11px; font-weight: bold; color: #c62828;
+            text-transform: uppercase; letter-spacing: 1px;
+            margin-bottom: 6px; padding-bottom: 4px;
+            border-bottom: 2px solid #4a148c; display: inline-block;
+        }
+
+        .terms-list {
+            font-size: 10px; color: #555;
+            line-height: 1.7; padding-left: 15px; margin: 0;
+        }
+
+        .sig-area {
+            display: flex; justify-content: space-between;
+            margin-top: 18px; flex-wrap: wrap; gap: 15px;
+        }
+
+        .sig-block { width: 42%; min-width: 170px; }
+
+        .sig-lbl {
+            font-size: 10px; color: #4a148c;
+            font-weight: bold; text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        .sig-line {
+            border-top: 3px solid #1a237e;
+            padding-top: 6px; margin-top: 35px; position: relative;
+        }
+
+        .sig-line::before {
+            content: ''; position: absolute; top: -3px; left: 0;
+            width: 50px; height: 3px; background: #e91e63;
+        }
+
+        .sig-name { font-weight: bold; color: #1a237e; font-size: 12px; }
+        .sig-det { font-size: 10px; color: #666; line-height: 1.5; }
+
+        .stamp {
+            padding: 10px; border: 2px dashed #c5cae9;
+            border-radius: 8px; text-align: center;
+            min-height: 50px; display: flex;
+            align-items: center; justify-content: center;
+            width: 42%; min-width: 170px; margin-top: 18px;
+        }
+
+        .stamp span { font-size: 10px; color: #9e9e9e; font-style: italic; }
+
+        .thanks {
+            text-align: center; margin-top: 14px; padding: 10px;
+            background: linear-gradient(135deg, #e8eaf6, #ede7f6, #fce4ec);
+            border-radius: 8px; border: 1px solid #c5cae9;
+        }
+
+        .thanks p {
+            font-size: 13px; color: #1a237e;
+            font-weight: bold; font-style: italic;
+            letter-spacing: 1px; margin: 0;
+        }
+
+        .thanks .sm {
+            font-size: 10px; color: #666;
+            font-weight: normal; margin-top: 2px;
+        }
+
+        .page-footer {
+            position: absolute; bottom: 0;
+            left: 14px; right: 14px; z-index: 2;
+        }
+
+        .footer-bar {
+            background: linear-gradient(135deg, #1a237e, #4a148c, #1a237e);
+            padding: 8px 20px;
+            border-top: 3px solid #e91e63; text-align: center;
+        }
+
+        .footer-bar p {
+            font-size: 9px; color: rgba(255,255,255,0.9);
+            line-height: 1.5; margin: 0;
+        }
+
+        .footer-bar strong { color: #e8b4f8; }
+        .footer-bar .sep { color: #e91e63; margin: 0 4px; }
+    </style>
+</head>
+<body>
+
+    <div class="no-print">
+        <button class="btn" onclick="window.print()">&#128424; Print Invoice</button>
+        <button class="btn btn-pdf" onclick="window.print()">&#128190; Save as PDF</button>
+    </div>
+
+    <div class="page">
+        <div class="bg-pattern"></div>
+        <div class="side-left"></div>
+        <div class="side-right"></div>
+        <div class="watermark">&#9764;</div>
+        <div class="watermark-text">MEDICAL INVOICE</div>
+
+        <div class="inner">
+
+            <div class="header-bar">
+                <div class="header-cross"><span>+</span></div>
+                <div class="practice-name">Dr Ikponmwosa Irene Practice</div>
+                <div class="medical-title">Medical Practitioner</div>
+            </div>
+
+            <div class="badges">
+                <span class="badge">HPCSA: MP0718181</span>
+                <span class="badge purple">Practice No: 1232126</span>
+                <span class="badge red">Tax Invoice</span>
+            </div>
+
+            <div class="details-box">
+                <div class="details-row">
+                    <span class="label">Business Address:</span> 141 Acacia Street, Rosedale, Uitenhage, Eastern Cape
+                </div>
+                <div class="details-row">
+                    <span class="label">Postal Address:</span> 27 Devon Place, 04 Penzance Observatory, Cape Town
+                </div>
+                <div class="details-row">
+                    <span class="label">Phone:</span> 063 003 0044
+                    <span class="sep">&#9830;</span>
+                    <span class="label">Email:</span> ikbrown2001@yahoo.com
+                </div>
+            </div>
+
+            <div class="title-banner">
+                <h2>Tax Invoice</h2>
+                <div class="sub">Medical Services Rendered</div>
+            </div>
+
+            <div class="inv-info">
+                <div class="info-block">
+                    <div class="info-title">Bill To (Patient Details)</div>
+                    <div class="field"><span class="field-label">Patient Name:</span><div class="field-val"></div></div>
+                    <div class="field"><span class="field-label">ID Number:</span><div class="field-val"></div></div>
+                    <div class="field"><span class="field-label">Address:</span><div class="field-val"></div></div>
+                    <div class="field"><span class="field-label">Phone:</span><div class="field-val"></div></div>
+                    <div class="field"><span class="field-label">Medical Aid:</span><div class="field-val"></div></div>
+                    <div class="field"><span class="field-label">Member No:</span><div class="field-val"></div></div>
+                </div>
+                <div class="inv-box">
+                    <div class="lbl">Invoice Number</div>
+                    <div class="num">INV-________</div>
+                    <div class="dt">Date: ___/___/______</div>
+                    <div class="dt" style="margin-top:6px;">Due: ___/___/______</div>
+                </div>
+            </div>
+
+            <div class="divider">
+                <div class="line"></div>
+                <div class="dot"></div>
+                <div class="diamond"></div>
+                <div class="dot"></div>
+                <div class="line r"></div>
+            </div>
+
+            <table class="inv-table">
+                <thead>
+                    <tr>
+                        <th style="width:6%;">#</th>
+                        <th style="width:14%;">Tariff Code</th>
+                        <th style="width:36%;">Description</th>
+                        <th class="right" style="width:8%;">Qty</th>
+                        <th class="right" style="width:16%;">Unit Price</th>
+                        <th class="right" style="width:16%;">Amount (R)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td></td><td></td><td class="right"></td><td class="right"></td><td class="right"></td></tr>
+                    <tr><td>2</td><td></td><td></td><td class="right"></td><td class="right"></td><td class="right"></td></tr>
+                    <tr><td>3</td><td></td><td></td><td class="right"></td><td class="right"></td><td class="right"></td></tr>
+                    <tr><td>4</td><td></td><td></td><td class="right"></td><td class="right"></td><td class="right"></td></tr>
+                    <tr><td>5</td><td></td><td></td><td class="right"></td><td class="right"></td><td class="right"></td></tr>
+                    <tr><td>6</td><td></td><td></td><td class="right"></td><td class="right"></td><td class="right"></td></tr>
+                    <tr><td>7</td><td></td><td></td><td class="right"></td><td class="right"></td><td class="right"></td></tr>
+                    <tr><td>8</td><td></td><td></td><td class="right"></td><td class="right"></td><td class="right"></td></tr>
+                </tbody>
+            </table>
+
+            <div class="totals">
+                <div class="totals-box">
+                    <div class="t-row">
+                        <span class="t-l">Subtotal</span>
+                        <span class="t-v">R</span>
+                    </div>
+                    <div class="t-row">
+                        <span class="t-l">VAT (15%)</span>
+                        <span class="t-v">R</span>
+                    </div>
+                    <div class="t-row">
+                        <span class="t-l">Discount</span>
+                        <span class="t-v">R</span>
+                    </div>
+                    <div class="t-row">
+                        <span class="t-l">Medical Aid Claimed</span>
+                        <span class="t-v">R</span>
+                    </div>
+                    <div class="t-row grand">
+                        <span class="t-l">TOTAL DUE</span>
+                        <span class="t-v">R</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-section">
+                <div class="pay-box">
+                    <div class="pay-title">Banking Details</div>
+                    <div class="pay-field"><span class="pay-label">Bank Name:</span><div class="pay-val"></div></div>
+                    <div class="pay-field"><span class="pay-label">Account Name:</span><div class="pay-val"></div></div>
+                    <div class="pay-field"><span class="pay-label">Account No:</span><div class="pay-val"></div></div>
+                    <div class="pay-field"><span class="pay-label">Branch Code:</span><div class="pay-val"></div></div>
+                    <div class="pay-field"><span class="pay-label">Account Type:</span><div class="pay-val"></div></div>
+                    <div class="pay-field"><span class="pay-label">Reference:</span><div class="pay-val"></div></div>
+                </div>
+                <div class="terms-box">
+                    <div class="terms-title">Terms and Conditions</div>
+                    <ol class="terms-list">
+                        <li>Payment is due within 30 days of invoice date</li>
+                        <li>Please use invoice number as payment reference</li>
+                        <li>Late payments may incur interest charges</li>
+                        <li>Medical aid claims are subject to scheme rules</li>
+                        <li>Queries must be raised within 7 days</li>
+                        <li>This invoice is issued in South African Rand (ZAR)</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="sig-area">
+                <div class="sig-block">
+                    <div class="sig-lbl">Authorized By</div>
+                    <div class="sig-line">
+                        <div class="sig-name">Dr. Ikponmwosa Irene</div>
+                        <div class="sig-det">
+                            Medical Practitioner<br>
+                            HPCSA: MP0718181<br>
+                            Practice No: 1232126
+                        </div>
+                    </div>
+                </div>
+                <div class="stamp">
+                    <span>Official Practice Stamp</span>
+                </div>
+            </div>
+
+            <div class="thanks">
+                <p>Thank You For Choosing Our Practice</p>
+                <p class="sm">Your health is our priority. We appreciate your trust in our services.</p>
+            </div>
+
+        </div>
+
+        <div class="page-footer">
+            <div class="footer-bar">
+                <p>
+                    <strong>Dr Ikponmwosa Irene Practice</strong>
+                    <span class="sep">&#9830;</span>
+                    141 Acacia Street, Rosedale, Uitenhage, Eastern Cape
+                    <span class="sep">&#9830;</span>
+                    Phone: 063 003 0044
+                    <span class="sep">&#9830;</span>
+                    Email: ikbrown2001@yahoo.com
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
 
