@@ -1,1 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr Ikponmwosa Irene Practice - Letterhead</title>
+    <style>
+        @media print {
+            body { margin: 0; padding: 0; background: white; }
+            .no-print { display: none !important; }
+            .page { box-shadow: none; margin: 0; }
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: linear-gradient(135deg, #1a237e 0%, #4a148c 50%, #1a237e 100%);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .no-print {
+            text-align: center;
+            max-width: 210mm;
+            margin: 0 auto 15px auto;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #fff, #e8eaf6);
+            color: #1a237e;
+            border: 2px solid #fff;
+            padding: 14px 35px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 5px 8px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,255,255,0.3);
+        }
+
+        .btn-pdf {
+            background: linear-gradient(135deg, #e91e63, #c62828);
+            color: white;
+            border-color: #e91e63;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: #fff;
+            margin: 0 auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-pattern {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            opacity: 0.03; z-index: 0; pointer-events: none;
+            background-image:
+                radial-gradient(circle at 20% 80%, #1a237e 1px, transparent 1px),
+                radial-gradient(circle at 80% 20%, #4a148c 1px, transparent 1px);
+            background-size: 30px 30px, 40px 40px;
+        }
+
+        .side-left {
+            position: absolute; top: 0; left: 0;
+            width: 10px; height: 100%; z-index: 2;
+            background: linear-gradient(to bottom, #1a237e, #4a148c, #e91e63, #4a148c, #1a237e);
+        }
+
+        .side-right {
+            position: absolute; top: 0; right: 0;
+            width: 4px; height: 100%; z-index: 2;
+            background: linear-gradient(to bottom, #1a237e, #4a148c, #1a237e);
+        }
+
+        .watermark {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 250px;
+            color: rgba(26,35,126,0.02);
+            pointer-events: none; z-index: 0;
+        }
+
+        .inner {
+            position: relative; z-index: 1;
+            padding: 0 40px 0 44px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-bar {
+            background: linear-gradient(135deg, #1a237e, #283593, #4a148c, #6a1b9a, #4a148c);
+            margin: 0 -40px 0 -44px;
+            padding: 18px 44px 14px 48px;
+            text-align: center;
+        }
+
+        .header-cross {
+            width: 50px; height: 50px;
+            background: rgba(255,255,255,0.12);
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 6px auto;
+        }
+
+        .header-cross span { font-size: 28px; color: #e91e63; font-weight: bold; }
+
+        .practice-name {
+            font-size: 22px; font-weight: bold; color: #fff;
+            letter-spacing: 3px; text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 2px;
+        }
+
+        .medical-title {
+            font-size: 15px; color: #e8b4f8;
+            font-style: italic; letter-spacing: 2px;
+        }
+
+        .badges {
+            display: flex; justify-content: center;
+            gap: 12px; margin: 12px 0 10px 0; flex-wrap: wrap;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #1a237e, #283593);
+            color: white; padding: 4px 14px; border-radius: 20px;
+            font-size: 10px; font-weight: bold; letter-spacing: 1px;
+        }
+
+        .badge.purple { background: linear-gradient(135deg, #4a148c, #6a1b9a); }
+
+        .details-box {
+            background: linear-gradient(135deg, #f5f5ff, #ede7f6, #fce4ec, #ede7f6, #f5f5ff);
+            border: 1px solid #c5cae9;
+            border-left: 4px solid #4a148c;
+            border-right: 4px solid #4a148c;
+            border-radius: 8px; padding: 8px 16px;
+        }
+
+        .details-row {
+            font-size: 11px; color: #1a237e;
+            line-height: 1.7; text-align: center;
+        }
+
+        .details-row .label { color: #4a148c; font-weight: bold; }
+
+        .divider {
+            display: flex; align-items: center; margin: 12px 0;
+        }
+
+        .divider .line {
+            flex: 1; height: 2px;
+            background: linear-gradient(to right, transparent, #1a237e, #4a148c);
+        }
+
+        .divider .line.r {
+            background: linear-gradient(to left, transparent, #1a237e, #4a148c);
+        }
+
+        .divider .diamond {
+            width: 8px; height: 8px; background: #e91e63;
+            transform: rotate(45deg); margin: 0 10px;
+        }
+
+        .divider .dot {
+            width: 5px; height: 5px; background: #4a148c;
+            border-radius: 50%; margin: 0 5px;
+        }
+
+        .letter-body {
+            flex: 1;
+            font-size: 14px;
+            line-height: 2;
+            color: #333;
+        }
+
+        .date-line {
+            text-align: right;
+            margin-bottom: 20px;
+            font-size: 13px; color: #555;
+        }
+
+        .ref-line {
+            margin-bottom: 15px;
+            font-size: 13px; color: #555;
+        }
+
+        .to-section {
+            margin-bottom: 18px;
+            line-height: 2; color: #444;
+        }
+
+        .subject-line {
+            font-weight: bold; text-decoration: underline;
+            text-decoration-color: #4a148c;
+            margin-bottom: 18px;
+            font-size: 14px; color: #1a237e;
+        }
+
+        .blank-line {
+            border-bottom: 1px dotted #bbb;
+            margin-bottom: 14px; height: 20px;
+        }
+
+        .sig-section { margin-top: 20px; }
+
+        .sig-line {
+            width: 250px;
+            border-top: 3px solid #1a237e;
+            padding-top: 6px; margin-top: 40px;
+            position: relative;
+        }
+
+        .sig-line::before {
+            content: ''; position: absolute; top: -3px; left: 0;
+            width: 60px; height: 3px; background: #e91e63;
+        }
+
+        .sig-name { font-weight: bold; color: #1a237e; font-size: 13px; }
+        .sig-det { font-size: 10px; color: #666; line-height: 1.5; }
+
+        .page-footer {
+            position: absolute; bottom: 0;
+            left: 10px; right: 4px; z-index: 2;
+        }
+
+        .footer-bar {
+            background: linear-gradient(135deg, #1a237e, #4a148c, #1a237e);
+            padding: 8px 15px;
+            border-top: 3px solid #e91e63; text-align: center;
+        }
+
+        .footer-bar p {
+            font-size: 9px; color: rgba(255,255,255,0.9);
+            line-height: 1.5; margin: 0;
+        }
+
+        .footer-bar strong { color: #e8b4f8; }
+        .footer-bar .sep { color: #e91e63; margin: 0 4px; }
+    </style>
+</head>
+<body>
+
+    <div class="no-print">
+        <button class="btn" onclick="window.print()">&#128424; Print Letterhead</button>
+        <button class="btn btn-pdf" onclick="window.print()">&#128190; Save as PDF</button>
+    </div>
+
+    <div class="page">
+        <div class="bg-pattern"></div>
+        <div class="side-left"></div>
+        <div class="side-right"></div>
+        <div class="watermark">&#9764;</div>
+
+        <div class="inner">
+
+            <div class="header-bar">
+                <div class="header-cross"><span>+</span></div>
+                <div class="practice-name">Dr Ikponmwosa Irene Practice</div>
+                <div class="medical-title">Medical Practitioner</div>
+            </div>
+
+            <div class="badges">
+                <span class="badge">HPCSA Reg: MP0718181</span>
+                <span class="badge purple">Practice No: 1232126</span>
+            </div>
+
+            <div class="details-box">
+                <div class="details-row">
+                    <span class="label">Business Address:</span> 141 Acacia Street, Rosedale, Uitenhage, Eastern Cape
+                </div>
+                <div class="details-row">
+                    <span class="label">Postal Address:</span> 27 Devon Place, 04 Penzance Observatory, Cape Town
+                </div>
+                <div class="details-row">
+                    <span class="label">Phone:</span> 063 003 0044 | <span class="label">Email:</span> ikbrown2001@yahoo.com
+                </div>
+            </div>
+
+            <div class="divider">
+                <div class="line"></div>
+                <div class="dot"></div>
+                <div class="diamond"></div>
+                <div class="dot"></div>
+                <div class="line r"></div>
+            </div>
+
+            <div class="letter-body">
+                <div class="date-line">Date: ________________________________</div>
+                <div class="ref-line">Our Ref: ____________________ &nbsp;&nbsp; Your Ref: ____________________</div>
+                <div class="to-section">
+                    To: ____________________________________________<br>
+                    ____________________________________________<br>
+                    ____________________________________________
+                </div>
+                <div class="subject-line">Re: ________________________________________________________________________</div>
+                <p>Dear Sir/Madam,</p>
+                <div class="blank-line"></div>
+                <div class="blank-line"></div>
+                <div class="blank-line"></div>
+                <div class="blank-line"></div>
+                <div class="blank-line"></div>
+                <div class="blank-line"></div>
+                <div class="blank-line"></div>
+                <div class="blank-line"></div>
+                <div class="blank-line"></div>
+                <div class="blank-line"></div>
+                <div class="blank-line"></div>
+
+                <div class="sig-section">
+                    <p>Yours faithfully,</p>
+                    <div class="sig-line">
+                        <div class="sig-name">Dr. Ikponmwosa Irene</div>
+                        <div class="sig-det">
+                            Medical Practitioner<br>
+                            HPCSA Reg: MP0718181<br>
+                            Practice No: 1232126
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="page-footer">
+            <div class="footer-bar">
+                <p>
+                    <strong>Dr Ikponmwosa Irene Practice</strong>
+                    <span class="sep">&#9830;</span>
+                    141 Acacia Street, Rosedale, Uitenhage, Eastern Cape
+                    <span class="sep">&#9830;</span>
+                    Phone: 063 003 0044
+                    <span class="sep">&#9830;</span>
+                    Email: ikbrown2001@yahoo.com
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
 
