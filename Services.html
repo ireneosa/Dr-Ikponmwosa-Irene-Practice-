@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services | Dr I Irene Practice</title>
-    <meta name="description" content="Explore our comprehensive medical services including general consultations, chronic disease management, vaccinations, minor procedures, occupational health, and more at Dr Ikponmwosa Irene Practice, Uitenhage.">
+    <meta name="description" content="Explore our comprehensive medical services including general consultations, chronic disease management, vaccinations, minor procedures, occupational health, and more at Dr I Irene Practice, Uitenhage.">
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17939250098"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-17939250098');
-    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NV22Q8WV');</script>
+    <!-- End Google Tag Manager -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,7 +45,6 @@
             overflow-x: hidden;
         }
 
-        /* === UTILITY BAR === */
         .utility-bar {
             background: var(--navy);
             color: rgba(255,255,255,0.8);
@@ -88,7 +86,6 @@
             padding: 0 24px;
         }
 
-        /* === NAV === */
         .navbar {
             background: var(--white);
             padding: 16px 0;
@@ -99,9 +96,7 @@
             transition: box-shadow 0.3s;
         }
 
-        .navbar.scrolled {
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
+        .navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
 
         .nav-inner {
             display: flex;
@@ -179,7 +174,6 @@
         }
 
         .nav-links a:hover::after { width: 100%; }
-
         .nav-links a.active { color: var(--teal); }
         .nav-links a.active::after { width: 100%; }
 
@@ -211,7 +205,6 @@
             transition: all 0.3s;
         }
 
-        /* === PAGE HEADER === */
         .page-header {
             background: linear-gradient(135deg, var(--navy) 0%, #132840 60%, var(--teal-dark) 100%);
             color: white;
@@ -261,7 +254,6 @@
 
         .breadcrumb a:hover { color: var(--gold); }
 
-        /* === SECTIONS === */
         section { padding: 80px 0; }
 
         .section-label {
@@ -293,11 +285,8 @@
             text-align: center;
         }
 
-        .section-header .section-subtitle {
-            margin: 0 auto;
-        }
+        .section-header .section-subtitle { margin: 0 auto; }
 
-        /* === SERVICE DETAIL CARDS === */
         .service-detail {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -315,13 +304,8 @@
             transform: translateY(-3px);
         }
 
-        .service-detail:nth-child(even) {
-            direction: rtl;
-        }
-
-        .service-detail:nth-child(even) > * {
-            direction: ltr;
-        }
+        .service-detail:nth-child(even) { direction: rtl; }
+        .service-detail:nth-child(even) > * { direction: ltr; }
 
         .service-visual {
             display: flex;
@@ -414,10 +398,7 @@
             font-size: 14px;
         }
 
-        /* === MEDICAL AID SECTION === */
-        .medaid-section {
-            background: var(--sand);
-        }
+        .medaid-section { background: var(--sand); }
 
         .medaid-grid {
             display: grid;
@@ -515,7 +496,6 @@
             line-height: 1.6;
         }
 
-        /* === CTA BANNER === */
         .cta-banner {
             background: linear-gradient(135deg, var(--teal), var(--teal-dark));
             color: white;
@@ -561,15 +541,8 @@
             font-family: 'Outfit', sans-serif;
         }
 
-        .btn-white {
-            background: white;
-            color: var(--teal);
-        }
-
-        .btn-white:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-        }
+        .btn-white { background: white; color: var(--teal); }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
 
         .btn-outline-white {
             background: transparent;
@@ -582,7 +555,6 @@
             background: rgba(255,255,255,0.06);
         }
 
-        /* === FOOTER === */
         footer {
             background: var(--navy);
             color: rgba(255,255,255,0.7);
@@ -606,11 +578,7 @@
             margin-bottom: 8px;
         }
 
-        .footer-brand p {
-            font-size: 14px;
-            max-width: 320px;
-            line-height: 1.7;
-        }
+        .footer-brand p { font-size: 14px; max-width: 320px; line-height: 1.7; }
 
         .footer-links h4 {
             color: white;
@@ -650,7 +618,6 @@
             font-size: 12px;
         }
 
-        /* === WHATSAPP FAB === */
         .whatsapp-fab {
             position: fixed;
             bottom: 28px;
@@ -673,30 +640,16 @@
             box-shadow: 0 10px 36px rgba(37,211,102,0.45);
         }
 
-        .whatsapp-fab svg {
-            width: 30px;
-            height: 30px;
-            fill: white;
-        }
+        .whatsapp-fab svg { width: 30px; height: 30px; fill: white; }
 
-        /* === ANIMATIONS === */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(24px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* === RESPONSIVE === */
         @media (max-width: 900px) {
             .nav-links { display: none; }
             .hamburger { display: block; }
@@ -712,23 +665,10 @@
                 box-shadow: 0 12px 32px rgba(0,0,0,0.1);
                 gap: 16px;
             }
-
-            .service-detail {
-                grid-template-columns: 1fr;
-            }
-
-            .service-detail:nth-child(even) {
-                direction: ltr;
-            }
-
-            .service-visual {
-                min-height: 200px;
-            }
-
-            .medaid-grid {
-                grid-template-columns: 1fr;
-            }
-
+            .service-detail { grid-template-columns: 1fr; }
+            .service-detail:nth-child(even) { direction: ltr; }
+            .service-visual { min-height: 200px; }
+            .medaid-grid { grid-template-columns: 1fr; }
             .page-header h2 { font-size: 32px; }
             .section-title { font-size: 28px; }
         }
@@ -751,11 +691,16 @@
 </head>
 <body>
 
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NV22Q8WV"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
     <!-- Utility Bar -->
     <div class="utility-bar">
         <div class="container">
             <div class="utility-links">
-                <a href="tel:+27419881115">📞 0419881115</a>
+                <a href="tel:+27419881115">📞 041 988 1115</a>
                 <div class="sep"></div>
                 <a href="mailto:ikponmwosai185@gmail.com">✉️ ikponmwosai185@gmail.com</a>
                 <div class="sep"></div>
@@ -778,7 +723,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html" class="active">Services</a></li>
                 <li><a href="booking.html">Book</a></li>
-                <li><a href="tel:+27419881115" class="nav-cta">Call Now</a></li>
+                <li><a href="tel:+27419881115" class="nav-cta">📞 Call Now</a></li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open')">
                 <span></span><span></span><span></span>
@@ -804,11 +749,8 @@
                 <p class="section-subtitle">From routine check-ups to specialised care, our practice provides a broad range of medical services delivered with professionalism and compassion.</p>
             </div>
 
-            <!-- General Consultations -->
             <div class="service-detail fade-in">
-                <div class="service-visual sv-teal">
-                    <div class="big-icon">🩺</div>
-                </div>
+                <div class="service-visual sv-teal"><div class="big-icon">🩺</div></div>
                 <div class="service-content">
                     <div class="service-tag">Primary Care</div>
                     <h3>General Consultations</h3>
@@ -824,11 +766,8 @@
                 </div>
             </div>
 
-            <!-- Chronic Disease Management -->
             <div class="service-detail fade-in">
-                <div class="service-visual sv-navy">
-                    <div class="big-icon">❤️</div>
-                </div>
+                <div class="service-visual sv-navy"><div class="big-icon">❤️</div></div>
                 <div class="service-content">
                     <div class="service-tag">Ongoing Care</div>
                     <h3>Chronic Disease Management</h3>
@@ -844,11 +783,8 @@
                 </div>
             </div>
 
-            <!-- Vaccinations -->
             <div class="service-detail fade-in">
-                <div class="service-visual sv-green">
-                    <div class="big-icon">💉</div>
-                </div>
+                <div class="service-visual sv-green"><div class="big-icon">💉</div></div>
                 <div class="service-content">
                     <div class="service-tag">Prevention</div>
                     <h3>Vaccinations &amp; Immunisations</h3>
@@ -864,11 +800,8 @@
                 </div>
             </div>
 
-            <!-- Minor Procedures -->
             <div class="service-detail fade-in">
-                <div class="service-visual sv-rose">
-                    <div class="big-icon">🩹</div>
-                </div>
+                <div class="service-visual sv-rose"><div class="big-icon">🩹</div></div>
                 <div class="service-content">
                     <div class="service-tag">In-Office Procedures</div>
                     <h3>Minor Procedures</h3>
@@ -884,11 +817,8 @@
                 </div>
             </div>
 
-            <!-- Medical Certificates -->
             <div class="service-detail fade-in">
-                <div class="service-visual sv-blue">
-                    <div class="big-icon">📋</div>
-                </div>
+                <div class="service-visual sv-blue"><div class="big-icon">📋</div></div>
                 <div class="service-content">
                     <div class="service-tag">Documentation</div>
                     <h3>Medical Certificates &amp; Reports</h3>
@@ -904,11 +834,8 @@
                 </div>
             </div>
 
-            <!-- Occupational Health -->
             <div class="service-detail fade-in">
-                <div class="service-visual sv-gold">
-                    <div class="big-icon">🏢</div>
-                </div>
+                <div class="service-visual sv-gold"><div class="big-icon">🏢</div></div>
                 <div class="service-content">
                     <div class="service-tag">Workplace Health</div>
                     <h3>Occupational Health Services</h3>
@@ -924,11 +851,8 @@
                 </div>
             </div>
 
-            <!-- Family Health -->
             <div class="service-detail fade-in">
-                <div class="service-visual sv-purple">
-                    <div class="big-icon">👨‍👩‍👧‍👦</div>
-                </div>
+                <div class="service-visual sv-purple"><div class="big-icon">👨‍👩‍👧‍👦</div></div>
                 <div class="service-content">
                     <div class="service-tag">Family Care</div>
                     <h3>Family &amp; Women's Health</h3>
@@ -944,11 +868,8 @@
                 </div>
             </div>
 
-            <!-- Emergency -->
             <div class="service-detail fade-in">
-                <div class="service-visual sv-amber">
-                    <div class="big-icon">🚨</div>
-                </div>
+                <div class="service-visual sv-amber"><div class="big-icon">🚨</div></div>
                 <div class="service-content">
                     <div class="service-tag">Urgent Care</div>
                     <h3>After-Hours &amp; Urgent Enquiries</h3>
@@ -1005,7 +926,7 @@
             <p>Schedule your appointment today — by phone, WhatsApp, or our online form.</p>
             <div class="cta-buttons">
                 <a href="booking.html" class="btn btn-white">📅 Book an Appointment</a>
-                <a href="https://wa.me/27630030044?text=Hello%20Dr%20Ikponmwosa%20Irene%20Practice%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener" class="btn btn-outline-white">💬 WhatsApp Us</a>
+                <a href="https://wa.me/27705269282?text=Hello%20Dr%20I%20Irene%20Practice%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener" class="btn btn-outline-white">💬 WhatsApp Us</a>
             </div>
         </div>
     </section>
@@ -1026,9 +947,9 @@
                 </div>
                 <div class="footer-links">
                     <h4>Contact</h4>
-                    <a href="tel:+27419881115">0419881115</a>
+                    <a href="tel:+27419881115">041 988 1115</a>
+                    <a href="https://wa.me/27705269282">070 526 9282 (WhatsApp)</a>
                     <a href="mailto:ikponmwosai185@gmail.com">ikponmwosai185@gmail.com</a>
-                    <a href="https://wa.me/27630030044" target="_blank" rel="noopener">WhatsApp Us</a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -1039,17 +960,15 @@
     </footer>
 
     <!-- WhatsApp FAB -->
-    <a href="https://wa.me/27630030044?text=Hello%20Dr%20Ikponmwosa%20Irene%20Practice%2C%20I%20would%20like%20to%20book%20an%20appointment." class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/27705269282?text=Hello%20Dr%20I%20Irene%20Practice%2C%20I%20would%20like%20to%20book%20an%20appointment." class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.12 1.52 5.853L.057 23.765l6.063-1.59A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.785a9.77 9.77 0 01-5.39-1.61l-.386-.23-3.598.943.96-3.505-.253-.402A9.746 9.746 0 012.215 12 9.785 9.785 0 0112 2.215 9.785 9.785 0 0121.785 12 9.785 9.785 0 0112 21.785z"/></svg>
     </a>
 
     <script>
-        // Nav scroll
         window.addEventListener('scroll', () => {
             document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
         });
 
-        // Fade in
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.1 });
