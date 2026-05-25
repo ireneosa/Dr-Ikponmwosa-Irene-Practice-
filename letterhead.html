@@ -45,7 +45,6 @@
             position: relative; overflow: hidden;
         }
 
-        /* === COLORFUL SIDE STRIPES === */
         .stripe-left {
             position: absolute; top: 0; left: 0;
             width: 12px; height: 100%; z-index: 2;
@@ -62,7 +61,6 @@
             background: linear-gradient(to bottom, #1a237e, #4a148c, #1a237e);
         }
 
-        /* === BACKGROUND PATTERN === */
         .bg-dots {
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             opacity: 0.03; z-index: 0; pointer-events: none;
@@ -72,7 +70,6 @@
             background-size: 30px 30px, 40px 40px;
         }
 
-        /* === WATERMARK === */
         .watermark {
             position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%);
@@ -81,18 +78,16 @@
             pointer-events: none; z-index: 0;
         }
 
-        /* === INNER CONTENT === */
         .inner {
             position: relative; z-index: 1;
             padding: 0 38px 0 42px;
         }
 
-        /* === COLORFUL HEADER BAR === */
         .header-bar {
             background: linear-gradient(135deg, #1a237e 0%, #283593 20%, #4a148c 50%, #6a1b9a 80%, #4a148c 100%);
             margin: 0 -38px 0 -42px;
             padding: 18px 42px 14px 46px;
-            text-align: centre;
+            text-align: center;
         }
 
         .header-cross {
@@ -104,36 +99,15 @@
             margin: 0 auto 6px auto;
         }
 
-        .header-cross span {
-            font-size: 30px; color: #e91e63; font-weight: bold;
-        }
+        .header-cross span { font-size: 30px; color: #e91e63; font-weight: bold; }
 
-        .practice-name {
-            font-size: 23px; font-weight: bold; color: #ffffff;
-            letter-spacing: 3px; text-transform: uppercase;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
+        .practice-name { font-size: 23px; font-weight: bold; color: #ffffff; letter-spacing: 3px; text-transform: uppercase; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .medical-title { font-size: 15px; color: #e8b4f8; font-style: italic; letter-spacing: 2px; }
 
-        .medical-title {
-            font-size: 15px; color: #e8b4f8;
-            font-style: italic; letter-spacing: 2px;
-        }
-
-        /* === COLORFUL BADGES === */
-        .badges {
-            display: flex; justify-content: center;
-            gap: 12px; margin: 12px 0 10px 0;
-        }
-
-        .badge {
-            background: linear-gradient(135deg, #1a237e, #283593);
-            color: white; padding: 4px 15px; border-radius: 20px;
-            font-size: 10px; font-weight: bold; letter-spacing: 1px;
-        }
-
+        .badges { display: flex; justify-content: center; gap: 12px; margin: 12px 0 10px 0; }
+        .badge { background: linear-gradient(135deg, #1a237e, #283593); color: white; padding: 4px 15px; border-radius: 20px; font-size: 10px; font-weight: bold; letter-spacing: 1px; }
         .badge.purple { background: linear-gradient(135deg, #4a148c, #6a1b9a); }
 
-        /* === COLORFUL DETAILS BOX === */
         .details-box {
             background: linear-gradient(135deg, #f5f5ff, #ede7f6, #fce4ec, #ede7f6, #f5f5ff);
             border: 1px solid #c5cae9;
@@ -142,56 +116,21 @@
             border-radius: 8px; padding: 8px 16px;
         }
 
-        .details-row {
-            font-size: 11px; color: #1a237e;
-            line-height: 1.7; text-align: center;
-        }
-
+        .details-row { font-size: 11px; color: #1a237e; line-height: 1.7; text-align: center; }
         .details-row .label { color: #4a148c; font-weight: bold; }
         .details-row .sep { color: #e91e63; font-weight: bold; margin: 0 5px; }
 
-        /* === DIAMOND DIVIDER === */
-        .divider {
-            display: flex; align-items: center; margin: 12px 0;
-        }
+        .divider { display: flex; align-items: center; margin: 12px 0; }
+        .divider .line { flex: 1; height: 2px; background: linear-gradient(to right, transparent, #1a237e, #4a148c); }
+        .divider .line.r { background: linear-gradient(to left, transparent, #1a237e, #4a148c); }
+        .divider .diamond { width: 8px; height: 8px; background: #e91e63; transform: rotate(45deg); margin: 0 10px; }
+        .divider .dot { width: 5px; height: 5px; background: #4a148c; border-radius: 50%; margin: 0 5px; }
 
-        .divider .line {
-            flex: 1; height: 2px;
-            background: linear-gradient(to right, transparent, #1a237e, #4a148c);
-        }
+        .letter-body { font-size: 13px; line-height: 1.9; color: #333; }
 
-        .divider .line.r {
-            background: linear-gradient(to left, transparent, #1a237e, #4a148c);
-        }
-
-        .divider .diamond {
-            width: 8px; height: 8px; background: #e91e63;
-            transform: rotate(45deg); margin: 0 10px;
-        }
-
-        .divider .dot {
-            width: 5px; height: 5px; background: #4a148c;
-            border-radius: 50%; margin: 0 5px;
-        }
-
-        /* === LETTER BODY === */
-        .letter-body {
-            font-size: 13px; line-height: 1.9; color: #333;
-        }
-
-        .date-line {
-            text-align: right; margin-bottom: 18px;
-            font-size: 13px; color: #555;
-        }
-
-        .ref-line {
-            margin-bottom: 14px;
-            font-size: 12px; color: #555;
-        }
-
-        .to-section {
-            margin-bottom: 16px; line-height: 2; color: #444;
-        }
+        .date-line { text-align: right; margin-bottom: 18px; font-size: 13px; color: #555; }
+        .ref-line { margin-bottom: 14px; font-size: 12px; color: #555; }
+        .to-section { margin-bottom: 16px; line-height: 2; color: #444; }
 
         .subject-line {
             font-weight: bold; text-decoration: underline;
@@ -200,12 +139,8 @@
             font-size: 13px; color: #1a237e;
         }
 
-        .blank-line {
-            border-bottom: 1px dotted #bbb;
-            margin-bottom: 13px; height: 18px;
-        }
+        .blank-line { border-bottom: 1px dotted #bbb; margin-bottom: 13px; height: 18px; }
 
-        /* === SIGNATURE === */
         .sig-section { margin-top: 15px; }
 
         .sig-line {
@@ -215,19 +150,12 @@
             position: relative;
         }
 
-        .sig-line::before {
-            content: ''; position: absolute; top: -3px; left: 0;
-            width: 55px; height: 3px; background: #e91e63;
-        }
+        .sig-line::before { content: ''; position: absolute; top: -3px; left: 0; width: 55px; height: 3px; background: #e91e63; }
 
         .sig-name { font-weight: bold; color: #1a237e; font-size: 12px; }
         .sig-det { font-size: 10px; color: #666; line-height: 1.4; }
 
-        /* === COLORFUL FOOTER === */
-        .page-footer {
-            position: absolute; bottom: 0;
-            left: 12px; right: 5px; z-index: 2;
-        }
+        .page-footer { position: absolute; bottom: 0; left: 12px; right: 5px; z-index: 2; }
 
         .footer-bar {
             background: linear-gradient(135deg, #1a237e 0%, #4a148c 50%, #1a237e 100%);
@@ -235,11 +163,7 @@
             border-top: 3px solid #e91e63; text-align: center;
         }
 
-        .footer-bar p {
-            font-size: 9px; color: rgba(255,255,255,0.9);
-            line-height: 1.5; margin: 0;
-        }
-
+        .footer-bar p { font-size: 9px; color: rgba(255,255,255,0.9); line-height: 1.5; margin: 0; }
         .footer-bar strong { color: #e8b4f8; }
         .footer-bar .sep { color: #e91e63; margin: 0 4px; }
     </style>
@@ -275,12 +199,11 @@
                     <span class="label">Business Address:</span> 146 Acacia Street, Rosedale, Uitenhage, Eastern Cape
                 </div>
                 <div class="details-row">
-                    <span class="label">Postal Address:</span> 27 Devon Place, 04 Penzance Observatory, Cape Town
-                </div>
-                <div class="details-row">
-                    <span class="label">Phone:</span> 0419881115
+                    <span class="label">Phone:</span> 041 988 1115
                     <span class="sep">&#9830;</span>
-                    <span class="label">Email:</span> ikbrown2001@yahoo.com
+                    <span class="label">WhatsApp:</span> 070 526 9282
+                    <span class="sep">&#9830;</span>
+                    <span class="label">Email:</span> ikponmwosai185@gmail.com
                 </div>
             </div>
 
@@ -331,9 +254,9 @@
                     <span class="sep">&#9830;</span>
                     146 Acacia Street, Rosedale, Uitenhage, Eastern Cape
                     <span class="sep">&#9830;</span>
-                    Phone: 0419881115
+                    Tel: 041 988 1115
                     <span class="sep">&#9830;</span>
-                    Email: ikbrown2001@yahoo.com
+                    Email: ikponmwosai185@gmail.com
                 </p>
             </div>
         </div>
